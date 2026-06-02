@@ -1,22 +1,36 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Compteur de texte en temps réel permettant de calculer le nombre de caractères, de mots et le temps de lecture estimé." />
+    <meta name="keywords" content="compteur de mots, compteur de caractères, javascript, html, css" />
+    <meta name="author" content="Idriss Enone" />
     <title>Compteur en Temps Réel</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <main>
         <h1>Compteur en temps Réel</h1>
-        <textarea id="text-input" placeholder="Commencez à écrire ici..."></textarea>
-        <div class="stats">
+        <p id="help-text" class="sr-only">
+            Saisissez votre texte pour connaître le nombre de mots,
+            de caractères et le temps de lecture estimé.
+        </p>
+        <label for="text-input" class="sr-only">
+            Saisissez votre texte
+        </label>
+        <textarea id="text-input" placeholder="Commencez à écrire ici..." aria-describedby="help-text"></textarea>
+        <div class="stats" aria-live="polite">
             <p>Caractères: <span id="char-count">0</span></p>
             <p>Mots: <span id="word-count">0</span></p>
-            <p>Temps de lecture: <span id="read-time">0 min</span></p>
+            <p>Temps de lecture: <span id="read-time">0</span></p>
         </div>
     </main>
 
     <script src="script.js"></script>
 </body>
+
 </html>
