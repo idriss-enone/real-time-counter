@@ -1,4 +1,7 @@
 const textInput = document.getElementById("text-input");
+const themeToggle = document.getElementById("theme-toggle");
+const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+const html = document.documentElement;
 
 
 function getPostStats(text, wordsPerMinute=255){
@@ -9,7 +12,6 @@ function getPostStats(text, wordsPerMinute=255){
     //Cela évite de compter les espaces doubles ou les sauts de page comme des mots.
     const words = text.trim() === '' ? [] : text.trim().split(/\s+/);
     const wordCount = words.length;
-    console.log(wordCount);
     // Calcul du temps de lecture
     //INFO : Un adulte lit en moyenne entre 200 et 255 mots par minute.
     // Math.ceil() arrondit à l'entier supérieur pour ne jamais afficher "0 min" dès qu'un mot est écrit.
@@ -38,6 +40,46 @@ textInput.addEventListener("input",() =>{
     updateReadingStats(".stats",text);
 })
 
+
+function initTheme(){
+    const savedTheme = localStorage.getItem('theme');
+    // Si user a déjà choisi -> on prend son choix
+    if(savedTheme){
+        html.setAttribute('data-theme', savedTheme);
+        return;
+    }
+    
+    //Sinon on regarde le navigateur/OS
+    applyTheme( prefersDark.matches ? "dark" : "light");
+}
+
+function applyTheme(theme){
+    html.setAttribute("data-theme",theme);
+    //Met à jour l'aria-label pour l'a11y
+    const label = theme === 'dark' ? 'Activer le mode clair' : 'Activer le mode sombre';
+    themeToggle.setAttribute('aria-label',label);
+}
+
+themeToggle.addEventListener("click", () => {
+   
+    const currentTheme = html.getAttribute("data-theme");
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    applyTheme(newTheme);
+    localStorage.setItem('theme',newTheme);
+    
+})
+
+// Se déclenche quand l'utilisateur change de thème système 
+prefersDark.addEventListener("change", (e) => {
+
+    //On applique SEULEMENT si l'user  n'a pas forcé un theme
+    if(!localStorage.getItem("theme")){
+        applyTheme(e.matches ? 'dark':'light'); // true si user definie son OS/navigateur en dark
+    }
+
+});
+
 document.addEventListener("DOMContentLoaded",() =>{
+    initTheme()
     updateReadingStats(".stats","");
 })
