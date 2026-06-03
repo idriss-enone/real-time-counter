@@ -66,7 +66,7 @@ L'application propose :
 
 ### Responsive Design
 
- L'application utilise une approche Approche Mobile First afin garantir une expérience optimale sur:
+ L'application utilise une approche Approche Mobile First afin de garantir une expérience optimale sur:
 
 * Ordinateurs
 * Tablettes
