@@ -143,7 +143,7 @@ Les performances et l'accessibilité du projet ont été vérifiées avec Lighth
 
 ### Rapport
 
-![Audit Lighthouse](./assets/lighthouse-audit.png)
+![Audit Lighthouse](./assets/lighthouse-audit.PNG)
 
 ---
 
