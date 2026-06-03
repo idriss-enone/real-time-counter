@@ -212,25 +212,16 @@ Aucune dépendance ni installation supplémentaire n'est requise.
 
 ```text
 .
-├── index.html         
-├── styles.css
-├── script.js
-├── assets/
+├── index.html                  # Structure de l'application  
+├── styles.css                  # Styles et thèmes
+├── script.js                   # Logique métier JavaScript  
+├── assets/                     # Captures et rapports
 │   ├── light-mode.png
 │   ├── dark-mode.png
 │   └── lighthouse-audit.png
-└── README.md
+└── README.md                   # Documentation du projet
 ```
 
-### Description
-
-| Fichier    | Description                |
-| ---------- | -------------------------- |
-| index.html | Structure de l'application |
-| styles.css | Styles et thèmes           |
-| script.js  | Logique métier JavaScript  |
-| assets     | Captures et rapports       |
-| README.md  | Documentation du projet    |
 
 ---
 
